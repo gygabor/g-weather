@@ -19,6 +19,9 @@ const config = {
     }),
   ],
   resolve: {
+    alias: {
+      '@src': path.resolve(__dirname, 'src'),
+    },
     modules: [__dirname, 'src', 'node_modules'],
     extensions: ['.*', '.js', '.jsx', '.tsx', '.ts'],
   },
