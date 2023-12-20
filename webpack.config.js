@@ -11,6 +11,7 @@ const config = {
   output: {
     filename: 'bundle.[fullhash].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -20,6 +21,9 @@ const config = {
   resolve: {
     modules: [__dirname, 'src', 'node_modules'],
     extensions: ['.*', '.js', '.jsx', '.tsx', '.ts'],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [
