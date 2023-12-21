@@ -1,17 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-interface City {
-  name: string
-  lat: number
-  long: number
-  timezone_offset: number
-}
+import { City } from '@src/types'
 
 const initialState: City[] = [
   {
+    id: 0,
     name: '',
     lat: 0,
-    long: 0,
+    lon: 0,
     timezone_offset: 0,
   },
 ]
