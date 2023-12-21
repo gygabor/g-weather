@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { cityReducer } from '@src/features/SaveCity'
+import { cityReducer } from '@src/features/CityFinder'
 
 export const store = configureStore({
   reducer: {

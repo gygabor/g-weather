@@ -1,7 +1,7 @@
 const routes = {
-  HOME: '/',
+  ROOT: '/',
   CITIES: '/cities',
-  WEATHER: '/weather/:city',
+  WEATHER: '/weather',
 }
 
 export default routes
