@@ -1,26 +1,22 @@
-import { Autocomplete, AutocompleteProps, TextField } from '@mui/material'
+import { Autocomplete, TextField } from '@mui/material'
 import { FC, useState } from 'react'
 import { Adornment, AutocompleteIcon } from './styles'
 
-interface Props extends AutocompleteProps<string, boolean, boolean, boolean> {
+interface Props {
   options: string[]
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const AutocompleteField: FC<Props> = ({ options, ...props }) => {
+const AutocompleteField: FC<Props> = ({ options, onChange }) => {
   const [open, setOpen] = useState(false)
 
   const toggleOpen = () => {
     setOpen(!open)
   }
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value)
-  }
-
   return (
     <>
       <Autocomplete
-        {...props}
         options={options}
         fullWidth={true}
         open={open}
