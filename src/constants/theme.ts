@@ -54,5 +54,30 @@ export const theme: MaterialUITheme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
+        },
+      },
+    },
   },
 })

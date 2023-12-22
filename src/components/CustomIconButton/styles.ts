@@ -14,9 +14,6 @@ const iconSize = {
 export const StyledIconButton = styled(IconButton)<StyledIconButtonProps>(
   ({ size }) => ({
     padding: '4px',
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
     '& svg': {
       fontSize: iconSize[size],
     },
