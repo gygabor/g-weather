@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { AutocompleteRenderInputParams, InputAdornment } from '@mui/material'
+import {
+  AutocompleteRenderInputParams,
+  Button,
+  InputAdornment,
+} from '@mui/material'
 
 interface AutocompleteTextFieldProps {
   params: AutocompleteRenderInputParams
@@ -20,4 +24,8 @@ export const AutocompleteIcon = styled(
     ? 'rotate(180deg)'
     : 'rotate(0deg)',
   transition: 'transform 0.3s',
+}))
+
+export const SaveButton = styled(Button)(() => ({
+  padding: '16px',
 }))
