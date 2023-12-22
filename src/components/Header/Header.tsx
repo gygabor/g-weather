@@ -1,8 +1,7 @@
 import routes from '@src/constants/routes'
 import { FC } from 'react'
-import { HeaderContainer } from './styles'
+import { HeaderContainer, HeaderIcon } from './styles'
 import { useLocation, useNavigate } from 'react-router'
-import CustomIconButton from '../CustomIconButton'
 
 const Header: FC = () => {
   const location = useLocation()
@@ -18,10 +17,12 @@ const Header: FC = () => {
   return (
     <HeaderContainer>
       {isVisible() && (
-        <CustomIconButton
+        <HeaderIcon
+          className="header-icon"
           iconType="chevronLeft"
           color="secondary"
           onClick={onClick}
+          size="medium"
         />
       )}
     </HeaderContainer>

@@ -1,2 +1,2 @@
 export { default as CityFinder } from './CityFinder'
-export { default as cityReducer } from './citySlice'
+export { default as citiesReducer } from './citiesSlice'
