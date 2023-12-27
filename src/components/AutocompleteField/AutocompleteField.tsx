@@ -1,16 +1,16 @@
 import { Autocomplete, TextField } from '@mui/material'
 import { FC, SyntheticEvent, useState } from 'react'
 import { Adornment, AutocompleteIcon, SaveButton } from './styles'
-import { City } from '@src/types'
+import { CityType } from '@src/types'
 
 interface Props {
-  options: City[]
-  onClick: (value: City) => void
+  options: CityType[]
+  onClick: (value: CityType) => void
 }
 
 const AutocompleteField: FC<Props> = ({ options, onClick }) => {
   const [open, setOpen] = useState(false)
-  const [value, setValue] = useState<City | null>(null)
+  const [value, setValue] = useState<CityType | null>(null)
 
   const toggleOpen = () => {
     setOpen(!open)
@@ -22,13 +22,13 @@ const AutocompleteField: FC<Props> = ({ options, onClick }) => {
     }
   }
 
-  const onChange = (e: SyntheticEvent, val: City | null) => {
+  const onChange = (e: SyntheticEvent, value: CityType | null) => {
     toggleOpen()
-    setValue(val)
+    setValue(value)
   }
 
-  const onInputChange = (e: SyntheticEvent, val: string) => {
-    if (!val) {
+  const onInputChange = (e: SyntheticEvent, value: string) => {
+    if (!value) {
       setValue(null)
     }
   }

@@ -4,13 +4,13 @@ import { FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import routes from '@src/constants/routes'
 import { useAppSelector } from '@src/services/store/hooks'
-import { City } from '@src/types'
+import { CityType } from '@src/types'
 
 const Home: FC = () => {
   const navigate = useNavigate()
 
   const cities = useAppSelector((state) => state.cities)
-  const onClick = (city: City) => {
+  const onClick = (city: CityType) => {
     navigate(routes.WEATHER, { state: { city } })
   }
 
