@@ -1,6 +1,10 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import webpack from 'webpack'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -16,6 +20,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
     }),
   ],
   resolve: {
