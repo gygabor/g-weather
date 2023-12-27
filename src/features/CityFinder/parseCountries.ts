@@ -1,7 +1,7 @@
-import { City } from '@src/types'
+import { CityType } from '@src/types'
 import { Country } from './types'
 
-const parseCounties = (countries: Country[]): City[] => {
+const parseCountries = (countries: Country[]): CityType[] => {
   return countries.flatMap((country, i) => {
     if (country.capital) {
       return [
@@ -11,8 +11,8 @@ const parseCounties = (countries: Country[]): City[] => {
           lat: country?.capitalInfo?.latlng
             ? country?.capitalInfo?.latlng[0]
             : country.latlng[0],
-          lng: country?.capitalInfo?.latlng
-            ? country?.capitalInfo?.latlng[0]
+          lon: country?.capitalInfo?.latlng
+            ? country?.capitalInfo?.latlng[1]
             : country.latlng[1],
         },
       ]
@@ -22,4 +22,4 @@ const parseCounties = (countries: Country[]): City[] => {
   })
 }
 
-export default parseCounties
+export default parseCountries
