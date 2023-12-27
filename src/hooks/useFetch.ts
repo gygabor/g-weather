@@ -9,7 +9,7 @@ interface Response<T> {
 
 const useFetch = <T>(url: string): Response<T> => {
   const [data, setData] = useState<T | null>(null)
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<Error | null>(null)
 
   const fetchData = async () => {
@@ -21,16 +21,14 @@ const useFetch = <T>(url: string): Response<T> => {
     setIsLoading(true)
     setData(null)
     setError(null)
-
     try {
-      fetchData()
+      fetchData().then(() => setIsLoading(false))
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(new Error(err.message))
       } else {
         setError(new Error('An unknown error occurred'))
       }
-    } finally {
       setIsLoading(false)
     }
   }, [url])
