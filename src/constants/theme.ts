@@ -1,4 +1,8 @@
-import { Theme as MaterialUITheme, createTheme } from '@mui/material/styles'
+import {
+  Theme as MaterialUITheme,
+  ThemeOptions,
+  createTheme,
+} from '@mui/material/styles'
 
 declare module '@emotion/react' {
   export interface Theme extends MaterialUITheme {}
@@ -10,10 +14,11 @@ const colors = {
   success: '#01ff40',
   background: '#142534',
   text: '#91b7cc',
+  textSecondary: '#3793b1',
   adornment: '#c2c6ca',
 }
 
-export const theme: MaterialUITheme = createTheme({
+export const theme: ThemeOptions = createTheme({
   palette: {
     background: {
       default: colors.background,
@@ -21,6 +26,7 @@ export const theme: MaterialUITheme = createTheme({
     },
     text: {
       primary: colors.primary,
+      secondary: colors.textSecondary,
     },
     primary: {
       main: colors.primary,
