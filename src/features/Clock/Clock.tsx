@@ -1,28 +1,42 @@
+import { FC, useEffect, useState } from 'react'
+import { ClockBox, ClockContainer, CustomTypography } from './styles'
 import { Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
 
-const Clock: React.FC<{ time: number; offset: number }> = ({
-  time,
-  offset,
-}) => {
-  const [hours, setHours] = useState<number>(0)
-  const [minutes, setMinutes] = useState<number>(0)
+type Props = {
+  time: number
+  offset: number
+  city: string
+}
+
+const Clock: FC<Props> = ({ time, offset, city }) => {
+  const [hours, setHours] = useState<string | null>(null)
+  const [minutes, setMinutes] = useState<string | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
       const date = new Date(Date.now() + offset * 1000)
-      setHours(date.getUTCHours())
-      setMinutes(date.getUTCMinutes())
+      const h = date.getUTCHours()
+      const m = date.getUTCMinutes()
+
+      setHours(h < 10 ? `0${h}` : `${h}`)
+      setMinutes(m < 10 ? `0${m}` : `${m}`)
     }, 1000)
 
     return () => clearInterval(interval)
   }, [time, offset])
 
   return (
-    <>
-      <Typography variant="h3">{hours}</Typography>
-      <Typography variant="h3">{minutes}</Typography>
-    </>
+    <ClockContainer>
+      <ClockBox>
+        <CustomTypography variant="h3" color="secondary">
+          {hours}
+        </CustomTypography>
+        <CustomTypography variant="h3" color="secondary">
+          {minutes}
+        </CustomTypography>
+      </ClockBox>
+      <Typography variant="h4">{city}</Typography>
+    </ClockContainer>
   )
 }
 
