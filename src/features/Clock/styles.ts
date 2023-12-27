@@ -10,7 +10,7 @@ export const ClockBox = styled(Box)(() => ({
   height: '96px',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   flexDirection: 'column',
 }))
 

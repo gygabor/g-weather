@@ -1,14 +1,13 @@
 import { FC, useEffect, useState } from 'react'
 import { ClockBox, ClockContainer, CustomTypography } from './styles'
-import { Typography } from '@mui/material'
+import { Skeleton, Typography } from '@mui/material'
 
 type Props = {
-  time: number
   offset: number
   city: string
 }
 
-const Clock: FC<Props> = ({ time, offset, city }) => {
+const Clock: FC<Props> = ({ offset, city }) => {
   const [hours, setHours] = useState<string | null>(null)
   const [minutes, setMinutes] = useState<string | null>(null)
 
@@ -23,17 +22,25 @@ const Clock: FC<Props> = ({ time, offset, city }) => {
     }, 1000)
 
     return () => clearInterval(interval)
-  }, [time, offset])
+  }, [offset])
 
   return (
     <ClockContainer>
       <ClockBox>
-        <CustomTypography variant="h3" color="secondary">
-          {hours}
-        </CustomTypography>
-        <CustomTypography variant="h3" color="secondary">
-          {minutes}
-        </CustomTypography>
+        {hours ? (
+          <CustomTypography variant="h3" color="secondary">
+            {hours}
+          </CustomTypography>
+        ) : (
+          <Skeleton variant="rounded" width={53} height={46} />
+        )}
+        {minutes ? (
+          <CustomTypography variant="h3" color="secondary">
+            {minutes}
+          </CustomTypography>
+        ) : (
+          <Skeleton variant="rounded" width={53} height={46} />
+        )}
       </ClockBox>
       <Typography variant="h4">{city}</Typography>
     </ClockContainer>
