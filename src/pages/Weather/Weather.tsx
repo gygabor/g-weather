@@ -1,7 +1,7 @@
 import { Skeleton } from '@mui/material'
 import { OPEN_WEATHER_URL } from '@src/constants/links'
 import Clock from '@src/features/Clock'
-import WeatherInfo from '@src/features/WeatherInfo'
+import WeatherDetails from '@src/features/WeatherDetails'
 import { useFetch } from '@src/hooks'
 import { WeatherType } from '@src/types'
 import { FC } from 'react'
@@ -28,12 +28,8 @@ const Weather: FC = () => {
         </>
       ) : (
         <>
-          <Clock
-            time={data.current.dt}
-            offset={data.timezone_offset}
-            city={city.name}
-          />
-          <WeatherInfo weather={data} />
+          <Clock offset={data.timezone_offset} city={city.name} />
+          <WeatherDetails weather={data} />
         </>
       )}
     </>
