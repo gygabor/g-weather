@@ -10,6 +10,8 @@ const colors = {
   success: '#01ff40',
   background: '#142534',
   text: '#91b7cc',
+  textSecondary: '#3793b1',
+  textDisabled: '#023876',
   adornment: '#c2c6ca',
 }
 
@@ -21,6 +23,8 @@ export const theme: MaterialUITheme = createTheme({
     },
     text: {
       primary: colors.primary,
+      secondary: colors.textSecondary,
+      disabled: colors.textDisabled,
     },
     primary: {
       main: colors.primary,
