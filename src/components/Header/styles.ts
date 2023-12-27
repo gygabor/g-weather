@@ -4,7 +4,7 @@ import CustomIconButton from '../CustomIconButton'
 
 export const HeaderContainer = styled(Container)(() => ({
   width: '100%',
-  height: '60px',
+  height: '80px',
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
