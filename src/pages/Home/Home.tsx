@@ -1,14 +1,17 @@
 import CustomIconButton from '@src/components/CustomIconButton'
 import CityList from '@src/components/CityList'
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import routes from '@src/constants/routes'
 import { useAppSelector } from '@src/services/store/hooks'
+import { City } from '@src/types'
 
 const Home: FC = () => {
+  const navigate = useNavigate()
+
   const cities = useAppSelector((state) => state.cities)
-  const onClick = (id: number) => {
-    console.log(id)
+  const onClick = (city: City) => {
+    navigate(routes.WEATHER, { state: { city } })
   }
 
   return (
