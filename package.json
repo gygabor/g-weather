@@ -47,6 +47,7 @@
     "@mui/material": "^5.15.1",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.2",
+    "mdi-material-ui": "^7.7.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.0"
   }
