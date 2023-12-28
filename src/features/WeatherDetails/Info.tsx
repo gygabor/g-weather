@@ -16,7 +16,9 @@ const Info: FC<Props> = ({ temp, sunrise, sunset, offset }) => {
 
   const sunsetDate = new Date((sunset + offset) * 1000)
   const sunsetTime = `${sunsetDate.getUTCHours()}:${sunsetDate.getUTCMinutes()}`
+
   const temperature = Math.round(temp)
+
   return (
     <WeatherContainer>
       <InfoBox>
