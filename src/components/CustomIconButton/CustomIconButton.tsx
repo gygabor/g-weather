@@ -5,7 +5,7 @@ import { StyledIconButton } from './styles'
 
 type IconType = keyof typeof Icons
 
-interface Props extends ButtonProps {
+type Props = ButtonProps & {
   iconType: IconType
   size?: 'small' | 'medium' | 'large'
 }

@@ -1,10 +1,10 @@
-import { CityType } from '@src/types'
+import { City } from '@src/types'
 import { FC } from 'react'
 import { CityName } from './styles'
 
-interface Props {
-  cities: CityType[]
-  onClick: (city: CityType) => void
+type Props = {
+  cities: City[]
+  onClick: (city: City) => void
 }
 
 const CityList: FC<Props> = ({ cities, onClick }) => {

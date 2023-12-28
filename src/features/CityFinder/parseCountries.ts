@@ -1,4 +1,4 @@
-import { CityType } from '@src/types'
+import { City } from '@src/types'
 import { Country } from './types'
 
 const hasDuplicateCapitals = (
@@ -11,10 +11,7 @@ const hasDuplicateCapitals = (
   )
 }
 
-const parseCountries = (
-  countries: Country[],
-  storedCities: CityType[],
-): CityType[] => {
+const parseCountries = (countries: Country[], storedCities: City[]): City[] => {
   const storedCityIds = storedCities.map((city) => city.id)
 
   return countries.flatMap((country, index) => {

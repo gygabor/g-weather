@@ -1,10 +1,10 @@
-import { CityType } from '@src/types'
+import { City } from '@src/types'
 import { OptionTypography } from './styles'
 import { Typography } from '@mui/material'
 
 const renderOptions = (
   props: React.HTMLAttributes<HTMLLIElement>,
-  option: CityType,
+  option: City,
   { inputValue }: { inputValue: string },
 ) => {
   const lowerCaseName = option.name.toLowerCase()
