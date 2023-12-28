@@ -1,6 +1,7 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { ClockBox, ClockContainer, CustomTypography } from './styles'
 import { Skeleton, Typography } from '@mui/material'
+import useClock from './useClock'
 
 type Props = {
   offset: number
@@ -8,21 +9,7 @@ type Props = {
 }
 
 const Clock: FC<Props> = ({ offset, city }) => {
-  const [hours, setHours] = useState<string | null>(null)
-  const [minutes, setMinutes] = useState<string | null>(null)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const date = new Date(Date.now() + offset * 1000)
-      const h = date.getUTCHours()
-      const m = date.getUTCMinutes()
-
-      setHours(h < 10 ? `0${h}` : `${h}`)
-      setMinutes(m < 10 ? `0${m}` : `${m}`)
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [offset])
+  const { hours, minutes } = useClock(offset)
 
   return (
     <ClockContainer>

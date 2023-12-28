@@ -1,10 +1,10 @@
-import { WeatherType } from '@src/types'
+import { WeatherInfo } from '@src/types'
 import { FC } from 'react'
 import Description from './Description'
 import Info from './Info'
 
 type Props = {
-  weather: WeatherType
+  weather: WeatherInfo
 }
 
 const WeatherDetails: FC<Props> = ({ weather }) => {

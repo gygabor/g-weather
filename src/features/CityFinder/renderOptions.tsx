@@ -1,15 +1,21 @@
 import { City } from '@src/types'
 import { OptionTypography } from './styles'
 import { Typography } from '@mui/material'
+import { ReactNode } from 'react'
+
+export type InputValue = {
+  inputValue: string
+}
 
 const renderOptions = (
   props: React.HTMLAttributes<HTMLLIElement>,
   option: City,
-  { inputValue }: { inputValue: string },
-) => {
+  { inputValue }: InputValue,
+): ReactNode => {
   const lowerCaseName = option.name.toLowerCase()
   const lowerCaseInputValue = inputValue.toLowerCase()
   const start = lowerCaseName.indexOf(lowerCaseInputValue)
+
   if (inputValue === '' || start === -1) {
     return (
       <li {...props} key={option.id}>
@@ -17,6 +23,7 @@ const renderOptions = (
       </li>
     )
   }
+
   const end = start + inputValue.length
   const before = option.name.slice(0, start)
   const highlighted = option.name.slice(start, end)

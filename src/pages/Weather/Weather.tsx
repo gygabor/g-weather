@@ -6,7 +6,7 @@ import { useFetch } from '@src/hooks'
 import { WeatherInfo } from '@src/types'
 import { FC } from 'react'
 import { useLocation } from 'react-router-dom'
-import ErrorMessage from '@src/components/ui/ErrorMessage'
+import ErrorMessage from '@src/components/ErrorMessage'
 
 const Weather: FC = () => {
   const { state } = useLocation()
@@ -16,25 +16,17 @@ const Weather: FC = () => {
 
   const { data, isLoading, error } = useFetch<WeatherInfo>(url)
 
-  return (
+  return error ? (
+    <ErrorMessage message={error.message} />
+  ) : isLoading || !data ? (
     <>
-      {error ? (
-        <ErrorMessage message={error.message} />
-      ) : (
-        <>
-          {isLoading || !data ? (
-            <>
-              <Skeleton variant="rounded" width={80} height={68} />
-              <Skeleton variant="rounded" width={'100%'} height={200} />
-            </>
-          ) : (
-            <>
-              <Clock offset={data.timezone_offset} city={city.name} />
-              <WeatherDetails weather={data} />
-            </>
-          )}
-        </>
-      )}
+      <Skeleton variant="rounded" width={80} height={68} />
+      <Skeleton variant="rounded" width={'100%'} height={200} />
+    </>
+  ) : (
+    <>
+      <Clock offset={data.timezone_offset} city={city.name} />
+      <WeatherDetails weather={data} />
     </>
   )
 }

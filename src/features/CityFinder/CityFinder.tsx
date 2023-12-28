@@ -1,9 +1,8 @@
 import { FC } from 'react'
-import { Autocomplete, TextField, Box } from '@mui/material'
+import { Autocomplete, TextField } from '@mui/material'
 import { Adornment, AutocompleteIcon, SaveButton } from './styles'
 import useCityFinder from './useCityFinder'
-import ErrorMessage from '@ui/ErrorMessage'
-import renderOptions from './renderOptions'
+import ErrorMessage from '@src/components/ErrorMessage'
 
 const CityFinder: FC = () => {
   const {
@@ -15,6 +14,7 @@ const CityFinder: FC = () => {
     onInputChange,
     error,
     cities,
+    renderOptions,
   } = useCityFinder()
 
   return (
@@ -31,6 +31,7 @@ const CityFinder: FC = () => {
             onInputChange={onInputChange}
             getOptionLabel={(option) => option.name}
             renderOption={renderOptions}
+            noOptionsText="No cities found"
             renderInput={(params) => {
               return (
                 <TextField

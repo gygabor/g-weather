@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { IconButton } from '@mui/material'
 
 type Props = {
-  size: 'small' | 'medium' | 'large' | 'xlarge'
+  size: 'small' | 'medium' | 'large'
 }
 
 const iconSize = {
