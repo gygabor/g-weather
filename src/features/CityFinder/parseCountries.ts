@@ -1,19 +1,36 @@
 import { CityType } from '@src/types'
 import { Country } from './types'
 
-const parseCountries = (countries: Country[]): CityType[] => {
-  return countries.flatMap((country, i) => {
-    if (country.capital) {
+const hasDuplicateCapitals = (
+  countries: Country[],
+  capital: string,
+  index: number,
+): boolean => {
+  return countries.some((c, i) =>
+    c.capital ? c.capital[0] === capital && i !== index : false,
+  )
+}
+
+const parseCountries = (
+  countries: Country[],
+  storedCities: CityType[],
+): CityType[] => {
+  const storedCityIds = storedCities.map((city) => city.id)
+
+  return countries.flatMap((country, index) => {
+    const { capital, cca2, capitalInfo, latlng, population } = country
+
+    if (capital && !storedCityIds.includes(`${index}-${population}`)) {
+      const [lat, lon] = capitalInfo?.latlng || latlng
+
       return [
         {
-          id: `${i}-${country.population}`,
-          name: country.capital[0],
-          lat: country?.capitalInfo?.latlng
-            ? country?.capitalInfo?.latlng[0]
-            : country.latlng[0],
-          lon: country?.capitalInfo?.latlng
-            ? country?.capitalInfo?.latlng[1]
-            : country.latlng[1],
+          id: `${index}-${country.population}`,
+          name: hasDuplicateCapitals(countries, capital[0], index)
+            ? `${capital[0]} (${cca2})`
+            : capital[0],
+          lat,
+          lon,
         },
       ]
     } else {
