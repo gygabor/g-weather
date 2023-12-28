@@ -1,4 +1,4 @@
-import { SyntheticEvent, useMemo, useState } from 'react'
+import { ReactNode, SyntheticEvent, useMemo, useState } from 'react'
 import { useFetch } from '@src/hooks'
 import { COUNTRIES_URL } from '@src/constants/links'
 import { City } from '@src/types'
@@ -8,6 +8,8 @@ import routes from '@src/constants/routes'
 import { useNavigate } from 'react-router-dom'
 import { Country } from './types'
 import parseCountries from './parseCountries'
+import { InputValue } from './renderOptions'
+import renderOptions from './renderOptions'
 
 type ReturnProps = {
   cities: City[]
@@ -18,6 +20,11 @@ type ReturnProps = {
   onChange: (_: SyntheticEvent, value: City | null) => void
   onInputChange: (_: SyntheticEvent, value: string) => void
   error: Error | null
+  renderOptions: (
+    props: React.HTMLAttributes<HTMLLIElement>,
+    option: City,
+    inputValue: InputValue,
+  ) => ReactNode
 }
 
 const useCityFinder = (): ReturnProps => {
@@ -68,6 +75,7 @@ const useCityFinder = (): ReturnProps => {
     onChange,
     onInputChange,
     error,
+    renderOptions,
   }
 }
 
