@@ -1,6 +1,6 @@
 import { Skeleton } from '@mui/material'
 import { OPEN_WEATHER_URL } from '@src/constants/links'
-import Clock from '@src/features/Clock'
+import Clock from '@src/components/Clock'
 import WeatherDetails from '@src/features/WeatherDetails'
 import { useFetch } from '@src/hooks'
 import { WeatherType } from '@src/types'
@@ -24,7 +24,7 @@ const Weather: FC = () => {
       {isLoading || !data ? (
         <>
           <Skeleton variant="rounded" width={80} height={68} />
-          <Skeleton variant="rounded" width={352} height={200} />
+          <Skeleton variant="rounded" width={'100%'} height={200} />
         </>
       ) : (
         <>

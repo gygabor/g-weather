@@ -1,36 +1,69 @@
-import { FC, useMemo } from 'react'
-import AutocompleteField from '@src/components/AutocompleteField'
-import { useFetch } from '@src/hooks'
-import { COUNTRIES_URL } from '@src/constants/links'
-import { CityType } from '@src/types'
-import { useAppDispatch } from '@src/services/store'
-import { saveCity } from './citiesSlice'
-import routes from '@src/constants/routes'
-import { useNavigate } from 'react-router-dom'
-import { Country } from './types'
-import parseCountries from './parseCountries'
+import { FC } from 'react'
+import { Autocomplete, TextField, Box } from '@mui/material'
+import { Adornment, AutocompleteIcon, SaveButton } from './styles'
+import useCityFinder from './useCityFinder'
+import ErrorMessage from '@ui/ErrorMessage'
+import renderOptions from './renderOptions'
 
 const CityFinder: FC = () => {
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const { data } = useFetch<Country[]>(COUNTRIES_URL)
-
-  const cities: CityType[] = useMemo(() => {
-    if (data) {
-      return parseCountries(data)
-    } else {
-      return []
-    }
-  }, [data])
-
-  const onClick = (city: CityType) => {
-    dispatch(saveCity(city))
-    navigate(routes.ROOT)
-  }
+  const {
+    isOpen,
+    value,
+    toggleOpen,
+    onClick,
+    onChange,
+    onInputChange,
+    error,
+    cities,
+  } = useCityFinder()
 
   return (
     <>
-      <AutocompleteField options={cities} onClick={onClick} />
+      {error ? (
+        <ErrorMessage>
+          <Box>Something went wrong. Please try again later.</Box>
+          <Box>Message: {error.message}</Box>
+        </ErrorMessage>
+      ) : (
+        <>
+          <Autocomplete
+            options={cities}
+            fullWidth
+            open={isOpen}
+            onChange={onChange}
+            onInputChange={onInputChange}
+            getOptionLabel={(option) => option.name}
+            renderOption={renderOptions}
+            renderInput={(params) => {
+              return (
+                <TextField
+                  {...params}
+                  placeholder="Search for a city"
+                  variant="standard"
+                  size="medium"
+                  onFocus={toggleOpen}
+                  InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                      <Adornment onClick={toggleOpen} position="end">
+                        <AutocompleteIcon params={params} />
+                      </Adornment>
+                    ),
+                  }}
+                  InputLabelProps={{
+                    className: '',
+                  }}
+                />
+              )
+            }}
+          />
+        </>
+      )}
+      {value && (
+        <SaveButton onClick={onClick} color="success">
+          Save
+        </SaveButton>
+      )}
     </>
   )
 }

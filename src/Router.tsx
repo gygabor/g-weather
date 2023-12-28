@@ -1,10 +1,11 @@
-import { FC } from 'react'
+import React, { FC, Suspense } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import routes from '@src/constants/routes'
-import Cities from '@src/pages/Cities'
 import Weather from '@src/pages/Weather'
 import Home from '@src/pages/Home'
 import RootLayout from './pages/RootLayout'
+import { Skeleton } from '@mui/material'
+const Cities = React.lazy(() => import('@src/pages/Cities'))
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
       },
       {
         path: routes.CITIES,
-        element: <Cities />,
+        element: (
+          <Suspense fallback={<Skeleton variant="text" width={'100%'} />}>
+            <Cities />
+          </Suspense>
+        ),
       },
       {
         path: routes.WEATHER,

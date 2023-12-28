@@ -13,16 +13,9 @@ const useFetch = <T>(url: string): Response<T> => {
   const [error, setError] = useState<Error | null>(null)
 
   const fetchData = async () => {
-    const response = await axios.get(url)
-    setData(response.data)
-  }
-
-  useEffect(() => {
-    setIsLoading(true)
-    setData(null)
-    setError(null)
     try {
-      fetchData().then(() => setIsLoading(false))
+      const response = await axios.get(url)
+      setData(response.data)
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(new Error(err.message))
@@ -31,6 +24,13 @@ const useFetch = <T>(url: string): Response<T> => {
       }
       setIsLoading(false)
     }
+  }
+
+  useEffect(() => {
+    setIsLoading(true)
+    setData(null)
+    setError(null)
+    fetchData().then(() => setIsLoading(false))
   }, [url])
 
   return { data, isLoading, error }

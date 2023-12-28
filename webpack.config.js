@@ -28,6 +28,7 @@ const config = {
   resolve: {
     alias: {
       '@src': path.resolve(__dirname, 'src'),
+      '@ui': path.resolve(__dirname, 'src/components/ui'),
     },
     modules: [__dirname, 'src', 'node_modules'],
     extensions: ['.*', '.js', '.jsx', '.tsx', '.ts'],
