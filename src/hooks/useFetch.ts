@@ -12,25 +12,25 @@ const useFetch = <T>(url: string): Response<T> => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<Error | null>(null)
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(url)
-      setData(response.data)
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(new Error(err.message))
-      } else {
-        setError(new Error('An unknown error occurred'))
-      }
-      setIsLoading(false)
-    }
-  }
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url)
+        setData(response.data)
+        setIsLoading(false)
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(new Error(err.message))
+        } else {
+          setError(new Error('An unknown error occurred'))
+        }
+        setIsLoading(false)
+      }
+    }
     setIsLoading(true)
     setData(null)
     setError(null)
-    fetchData().then(() => setIsLoading(false))
+    fetchData()
   }, [url])
 
   return { data, isLoading, error }
