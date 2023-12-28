@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-interface Response<T> {
+type Response<T> = {
   data: T | null
   isLoading: boolean
   error: Error | null

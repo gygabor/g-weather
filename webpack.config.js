@@ -3,6 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import webpack from 'webpack'
 import dotenv from 'dotenv'
+import process from 'process'
 
 dotenv.config()
 

@@ -1,7 +1,7 @@
 import AddIcon from '@mui/icons-material/Add'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 
-interface IconType {
+type IconType = {
   add: JSX.Element
   chevronLeft: JSX.Element
 }

@@ -1,4 +1,4 @@
-export type CityType = {
+export type City = {
   id: string
   name: string
   lat: number
@@ -10,7 +10,7 @@ type WeatherDescription = {
   id: number
 }
 
-export type WeatherType = {
+export type WeatherInfo = {
   current: {
     dt: number
     sunrise: number

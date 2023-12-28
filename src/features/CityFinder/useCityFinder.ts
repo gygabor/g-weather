@@ -1,7 +1,7 @@
 import { SyntheticEvent, useMemo, useState } from 'react'
 import { useFetch } from '@src/hooks'
 import { COUNTRIES_URL } from '@src/constants/links'
-import { CityType } from '@src/types'
+import { City } from '@src/types'
 import { useAppDispatch, useAppSelector } from '@src/services/store'
 import { saveCity } from './citiesSlice'
 import routes from '@src/constants/routes'
@@ -10,26 +10,26 @@ import { Country } from './types'
 import parseCountries from './parseCountries'
 
 type ReturnProps = {
-  cities: CityType[]
+  cities: City[]
   isOpen: boolean
-  value: CityType | null
+  value: City | null
   toggleOpen: () => void
   onClick: () => void
-  onChange: (_: SyntheticEvent, value: CityType | null) => void
+  onChange: (_: SyntheticEvent, value: City | null) => void
   onInputChange: (_: SyntheticEvent, value: string) => void
   error: Error | null
 }
 
 const useCityFinder = (): ReturnProps => {
   const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState<CityType | null>(null)
+  const [value, setValue] = useState<City | null>(null)
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const storedCities = useAppSelector((state) => state.cities)
   const { data, error } = useFetch<Country[]>(COUNTRIES_URL)
 
-  const cities: CityType[] = useMemo(() => {
+  const cities: City[] = useMemo(() => {
     if (data) {
       return parseCountries(data, storedCities)
     } else {
@@ -46,7 +46,7 @@ const useCityFinder = (): ReturnProps => {
     setIsOpen(!isOpen)
   }
 
-  const onChange = (_: SyntheticEvent, value: CityType | null) => {
+  const onChange = (_: SyntheticEvent, value: City | null) => {
     toggleOpen()
     setValue(value)
   }

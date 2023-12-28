@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { IconButton } from '@mui/material'
 
-interface StyledIconButtonProps {
+type Props = {
   size: 'small' | 'medium' | 'large' | 'xlarge'
 }
 
@@ -11,11 +11,9 @@ const iconSize = {
   large: '4rem',
 }
 
-export const StyledIconButton = styled(IconButton)<StyledIconButtonProps>(
-  ({ size }) => ({
-    padding: '4px',
-    '& svg': {
-      fontSize: iconSize[size],
-    },
-  }),
-)
+export const StyledIconButton = styled(IconButton)<Props>(({ size }) => ({
+  padding: '4px',
+  '& svg': {
+    fontSize: iconSize[size],
+  },
+}))
