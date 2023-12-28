@@ -5,4 +5,5 @@ export interface Country {
   }
   latlng: number[]
   population: number
+  cca2: string
 }
