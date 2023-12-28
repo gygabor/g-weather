@@ -12,7 +12,7 @@ const colors = {
   text: '#91b7cc',
   textSecondary: '#3793b1',
   textDisabled: '#023876',
-  adornment: '#c2c6ca',
+  info: '#c2c6ca',
 }
 
 export const theme: MaterialUITheme = createTheme({
@@ -37,7 +37,7 @@ export const theme: MaterialUITheme = createTheme({
       main: colors.success,
     },
     info: {
-      main: colors.adornment,
+      main: colors.info,
     },
   },
   components: {
@@ -48,6 +48,9 @@ export const theme: MaterialUITheme = createTheme({
             borderBottom: `1px solid ${colors.secondary}`,
           },
         },
+        input: {
+          fontSize: '1.25rem',
+        },
       },
     },
     MuiAutocomplete: {
@@ -55,6 +58,11 @@ export const theme: MaterialUITheme = createTheme({
         inputRoot: {
           '&:before': { borderBottom: `1px solid ${colors.secondary}` },
           '&:after': { borderBottom: `1px solid ${colors.secondary}` },
+        },
+        option: {
+          '&[class*="MuiAutocomplete-option"]': {
+            padding: '2px 0',
+          },
         },
       },
     },
