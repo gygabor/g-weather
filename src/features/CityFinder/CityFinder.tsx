@@ -50,6 +50,9 @@ const CityFinder: FC = () => {
                       </Adornment>
                     ),
                   }}
+                  InputLabelProps={{
+                    className: '',
+                  }}
                 />
               )
             }}
