@@ -20,10 +20,7 @@ const CityFinder: FC = () => {
   return (
     <>
       {error ? (
-        <ErrorMessage>
-          <Box>Something went wrong. Please try again later.</Box>
-          <Box>Message: {error.message}</Box>
-        </ErrorMessage>
+        <ErrorMessage message={error.message} />
       ) : (
         <>
           <Autocomplete

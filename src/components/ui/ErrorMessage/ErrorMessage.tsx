@@ -1,14 +1,16 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import { ErrorMessageTypography } from './styles'
+import { Box } from '@mui/material'
 
 type Props = {
-  children: ReactNode
+  message: string
 }
 
-const ErrorMessage: FC<Props> = ({ children }) => {
+const ErrorMessage: FC<Props> = ({ message }) => {
   return (
     <ErrorMessageTypography variant="subtitle1">
-      {children}
+      <Box>Something went wrong. Please try again later.</Box>
+      <Box>Message: {message}</Box>
     </ErrorMessageTypography>
   )
 }
