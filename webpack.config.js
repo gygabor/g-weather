@@ -21,6 +21,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+      favicon: './favicon.ico',
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
