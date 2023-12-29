@@ -4,11 +4,11 @@
 
 Before you begin, ensure you have met the following requirements:
 
-- You have OpenWeather account and API Key: (Link)[https://openweathermap.org/api]
+- You have OpenWeather account and API Key: [Link](https://openweathermap.org/api)
 
 ## Installing
 
-To install gmdb-frontend, follow these steps:
+To install g weather, follow these steps:
 
 ```bash
 git clone https://github.com/gygabor/g-weather.git
